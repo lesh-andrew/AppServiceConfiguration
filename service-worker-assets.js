@@ -9,8 +9,16 @@
       "url": "_framework\/dotnet.js"
     },
     {
+      "hash": "sha256-VdKq87\/z5NIxZKmuM+fv38XF+RcEb\/bg3jVBwQSfwP4=",
+      "url": "_framework\/dotnet.native.8.0.11.n1sf6xr5tz.js"
+    },
+    {
+      "hash": "sha256-KsgXD7u8rUFu+dWQbUjLU7NlpqjOiGk94nA6A8DGArc=",
+      "url": "_framework\/dotnet.native.wasm.br"
+    },
+    {
       "hash": "sha256-nam8JTYKjhMKOTg6+FlihYP6JpWPGe3jjM9fiUFWzhY=",
-      "url": "_framework\/dotnet.runtime.8.0.11.lzlqtfpif6.js"
+      "url": "_framework\/dotnet.runtime.8.0.11.tlu74f9tf6.js"
     },
     {
       "hash": "sha256-qPzRJ7vpZXzgfn\/zRN4sE1DCkIMOhv0uhpIe\/6UMYj4=",
@@ -25,23 +33,15 @@
       "url": "_framework\/icudt_no_CJK.dat.br"
     },
     {
-      "hash": "sha256-U8ZYncZocg9il2ozslpDATXQvT2lcZ0ZmZbSBOHHh9Q=",
+      "hash": "sha256-eutpbOqxhMGWjKhoBt5Epfn6lPWgKmbuec2d6wx2Ggo=",
       "url": "_framework\/blazor.boot.json.br"
     },
     {
-      "hash": "sha256-xCzBhZ0qN7y8U9HQZWvaXChll3q19eGkp7DLYtF3EPY=",
-      "url": "_framework\/dotnet.native.8.0.11.nhngpahhes.js"
-    },
-    {
-      "hash": "sha256-moN64WKwpWEidaWnHEBhDEu7L31\/UJwam+S1om7flzM=",
-      "url": "_framework\/dotnet.native.wasm.br"
-    },
-    {
-      "hash": "sha256-n7Guw8vARRbfM9efy+pEm7N0mxEurTUZea\/H8bYuGuY=",
+      "hash": "sha256-a6FDommEmkOdFk+rREBw5+zB6c1hGa+8RUIIiumyvRE=",
       "url": "_framework\/AppServiceConfiguration.wasm.br"
     },
     {
-      "hash": "sha256-TFTtgmsGQxzHNgpuPfw7h7CigLOvBuJL5TxnaEDlt2c=",
+      "hash": "sha256-dlmA9GBJcbpCrPxIvueaBXSyS+a6Z\/0MMef0SIkYzqQ=",
       "url": "_framework\/Microsoft.AspNetCore.Components.wasm.br"
     },
     {
@@ -273,7 +273,7 @@
       "url": "_framework\/System.Xml.XDocument.wasm.br"
     },
     {
-      "hash": "sha256-tj\/chCeei29fRLwphls4B5lsgZbvo+JateYbThPytEo=",
+      "hash": "sha256-IU9eCwhrY32a\/IiRZF6oncx+bOXbZWSH7JDYpVSeyL4=",
       "url": "css\/app.css"
     },
     {
@@ -289,11 +289,11 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-mZG6gLBHSMbR3IS5zrqWGgYygl0xkkTezpJFrYb\/dWw=",
+      "hash": "sha256-2WRoQ2UyxZAZ9t6aSjJEGVGZsUWOEiibOepbrb33654=",
       "url": "index.html"
     },
     {
-      "hash": "sha256-QmIs3qnoQrN6Ha4UmaM8ZBm4VUnXxQAceptwtMNsQfk=",
+      "hash": "sha256-xG\/R\/sO062NU6UpU2ADbLsnW\/o7MBZD2R02Qa96q4vI=",
       "url": "js\/download.js"
     },
     {
@@ -309,5 +309,5 @@
       "url": "brotliloader.min.js"
     }
   ],
-  "version": "fxKrc3o7"
+  "version": "L7TDwMgH"
 };

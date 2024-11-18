@@ -6,3 +6,12 @@
     link.click();
     document.body.removeChild(link);
 }
+
+function resetComponent() {
+        const textareas = document.querySelectorAll('textarea');
+
+        textareas?.forEach((val, key, parent) => {
+                val.value = "";
+                val.textContent = "";
+        });
+}
