@@ -6,24 +6,39 @@
 
 <h3>App Service Configuration JSON Converter</h3>
 
+<span id="error-message" class="text-danger"></span>
 <div class="converter-controls">
 
 <textarea @bind="inputJson" rows="10" cols="50" placeholder="Your App Service Configuration JSON goes here"></textarea>
+    <div>
+        <input type="button" title="Convert JSON" value="=>" @onclick="ConvertJson" />
+        <input type="button" title="Convert to Azure Config" value="<=" @onclick="ConvertToAzureConfig" />
+    </div>
 
-    <input type="button" title="Convert JSON" value="=>" @onclick="ConvertJson" />
-
-<textarea @bind="outputJson" rows="10" cols="50" readonly></textarea>
+<textarea @bind="outputJson" rows="10" cols="50" placeholder="Your Local Configuration (like secrets.json from VS) JSON goes here"></textarea>
     <hr />
-    <input type="button" class="converter-controls--download" value="Download JSON" @onclick="DownloadJson" />
+    <input type="button" class="converter-controls--download btn-primary-outline" value="Download JSON" @onclick="DownloadJson" />
+    <input type="button" class="converter-controls--clipboard btn-secondary-outline" value="Copy to Clipboard" @onclick="CopyToClipboard" />
+    <input type="button" class="converter-controls--reset btn-danger-outline" value="Reset" @onclick="ResetComponent" />
+
 
 </div>
 
 @code {
     private string inputJson;
     private string outputJson;
+    private string lastEditedTextarea;
+    private string errorMessage;
 
-    private void ConvertJson()
+    private async Task ConvertJson()
     {
+        if (string.IsNullOrEmpty(inputJson))
+        {
+            await ErrorMessage("Nothing has been done yet.");
+            return;
+        }
+
+        SetLastEditedTextarea("output");
         // Parse the JSON array
         JArray jsonArray = JArray.Parse(inputJson);
 
@@ -35,12 +50,6 @@
         {
             string name = item["name"].ToString();
             string value = item["value"].ToString();
-
-            // Ignore slotSetting field
-            if (item["slotSetting"]?.ToObject<bool>() == true)
-            {
-                continue;
-            }
 
             string[] nameParts = name.Split(':');
 
@@ -71,11 +80,87 @@
         AddToHierarchy((Dictionary<string, object>)dict[nameParts[index]], nameParts, value, index + 1);
     }
 
+    private async Task ConvertToAzureConfig()
+    {
+        if (string.IsNullOrEmpty(outputJson))
+        {
+            await ErrorMessage("Nothing has been done yet.");
+            return;
+        }
+
+        SetLastEditedTextarea("input");
+        var nestedDict = JsonSerializer.Deserialize<Dictionary<string, object>>(outputJson);
+        var configList = new List<Dictionary<string, object>>();
+        FlattenHierarchy(nestedDict, configList);
+        inputJson = JArray.FromObject(configList).ToString();
+    }
+
+    private void FlattenHierarchy(Dictionary<string, object> dict, List<Dictionary<string, object>> configList, string prefix = "")
+    {
+        foreach (var kvp in dict)
+        {
+            var key = string.IsNullOrEmpty(prefix) ? kvp.Key : $"{prefix}:{kvp.Key}";
+
+            if (kvp.Value is JsonElement jsonElement && jsonElement.ValueKind == JsonValueKind.Object)
+            {
+                var nestedDict = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonElement.GetRawText());
+                FlattenHierarchy(nestedDict, configList, key);
+            }
+            else
+            {
+                string value = kvp.Value?.ToString() ?? "";
+
+                var configItem = new Dictionary<string, object>
+            {
+                { "name", key },
+                { "value",  value},
+                { "slotSetting", false }
+            };
+                configList.Add(configItem);
+            }
+        }
+    }
+
+    private void SetLastEditedTextarea(string textarea)
+    {
+        lastEditedTextarea = textarea;
+    }
+
     private async Task DownloadJson()
     {
-        var fileName = "converted.json";
-        var fileBytes = System.Text.Encoding.UTF8.GetBytes(outputJson);
+        if (string.IsNullOrEmpty(lastEditedTextarea))
+        {
+            await ErrorMessage("Nothing has been done yet.");
+            return;
+        }
+
+        var content = lastEditedTextarea == "input" ? inputJson : outputJson;
+        var fileName = "converted.json"; var fileBytes = System.Text.Encoding.UTF8.GetBytes(content);
         var fileBase64 = Convert.ToBase64String(fileBytes);
         await JS.InvokeVoidAsync("downloadFile", fileName, fileBase64);
+    }
+    private async Task CopyToClipboard()
+    {
+        if (string.IsNullOrEmpty(lastEditedTextarea))
+        {
+            await ErrorMessage("Nothing has been done yet.");
+            return;
+        }
+
+        var content = lastEditedTextarea == "input" ? inputJson : outputJson;
+        await JS.InvokeVoidAsync("navigator.clipboard.writeText", content);
+    }
+
+    private async Task ResetComponent()
+    {
+        await JS.InvokeVoidAsync("resetComponent");
+        inputJson = "";
+        outputJson = "";
+        errorMessage = "";
+    }
+
+    private async Task ErrorMessage(string errorMessage)
+    {
+        await JS.InvokeVoidAsync("errorMessage", errorMessage);
     }
 }

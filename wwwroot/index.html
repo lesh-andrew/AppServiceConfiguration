@@ -4,7 +4,7 @@
 <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>AppServiceConfiguration</title>
+        <title>Azure App Service Configuration Converter</title>
         <base href="/" />
         <link rel="stylesheet" href="css/paper.min.css" />
         <link rel="stylesheet" href="css/app.css" />
@@ -16,22 +16,31 @@
 </head>
 
 <body>
-    <div id="app">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
-        </svg>
-        <div class="loading-progress-text"></div>
-    </div>
+        <div id="app">
+                <svg class="loading-progress">
+                        <circle r="40%" cx="50%" cy="50%" />
+                        <circle r="40%" cx="50%" cy="50%" />
+                </svg>
+                <div class="loading-progress-text"></div>
+        </div>
 
-    <div id="blazor-error-ui">
-        An unhandled error has occurred.
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
-    </div>
-    <script src="_framework/blazor.webassembly.js"></script>
-    <script src="js/download.js"></script>
-    <script>navigator.serviceWorker.register('service-worker.js');</script>
+        <div id="blazor-error-ui">
+                An unhandled error has occurred.
+                <a href="" class="reload">Reload</a>
+                <a class="dismiss">🗙</a>
+        </div>
+        <script>navigator.serviceWorker.register('service-worker.js');</script>
+        <script>
+                const tag = new Date().toISOString().split('T')[0];
+                const scripts = ["js/download.js", "_framework/blazor.webassembly.js"];
+                
+                scripts?.forEach((v) => {
+                        const newScript = document.createElement('script');
+                        newScript.src = v + "?d=" + tag;
+
+                        document.body.appendChild(newScript);
+                });
+        </script>
 </body>
 
 </html>
