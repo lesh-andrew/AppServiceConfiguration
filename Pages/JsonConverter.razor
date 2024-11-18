@@ -1,0 +1,81 @@
+﻿@page "/jsonconverter"
+@using System.Text.Json
+@using System.Text.Json.Serialization
+@using Newtonsoft.Json.Linq
+@inject IJSRuntime JS
+
+<h3>App Service Configuration JSON Converter</h3>
+
+<div class="converter-controls">
+
+<textarea @bind="inputJson" rows="10" cols="50" placeholder="Your App Service Configuration JSON goes here"></textarea>
+
+    <input type="button" title="Convert JSON" value="=>" @onclick="ConvertJson" />
+
+<textarea @bind="outputJson" rows="10" cols="50" readonly></textarea>
+    <hr />
+    <input type="button" class="converter-controls--download" value="Download JSON" @onclick="DownloadJson" />
+
+</div>
+
+@code {
+    private string inputJson;
+    private string outputJson;
+
+    private void ConvertJson()
+    {
+        // Parse the JSON array
+        JArray jsonArray = JArray.Parse(inputJson);
+
+        // Nested dictionary to hold the hierarchical structure
+        var groupedDict = new Dictionary<string, object>();
+
+        // Parse the JSON and group the key-value pairs by prefix
+        foreach (JObject item in jsonArray)
+        {
+            string name = item["name"].ToString();
+            string value = item["value"].ToString();
+
+            // Ignore slotSetting field
+            if (item["slotSetting"]?.ToObject<bool>() == true)
+            {
+                continue;
+            }
+
+            string[] nameParts = name.Split(':');
+
+            // Create the hierarchical structure
+            AddToHierarchy(groupedDict, nameParts, value);
+        }
+
+        // Convert dictionary to JSON
+        var jsonObject = JsonSerializer.Serialize(groupedDict, new JsonSerializerOptions { WriteIndented = true });
+
+        // Set the output JSON
+        outputJson = jsonObject;
+    }
+
+    private void AddToHierarchy(Dictionary<string, object> dict, string[] nameParts, string value, int index = 0)
+    {
+        if (index == nameParts.Length - 1)
+        {
+            dict[nameParts[index]] = value;
+            return;
+        }
+
+        if (!dict.ContainsKey(nameParts[index]))
+        {
+            dict[nameParts[index]] = new Dictionary<string, object>();
+        }
+
+        AddToHierarchy((Dictionary<string, object>)dict[nameParts[index]], nameParts, value, index + 1);
+    }
+
+    private async Task DownloadJson()
+    {
+        var fileName = "converted.json";
+        var fileBytes = System.Text.Encoding.UTF8.GetBytes(outputJson);
+        var fileBase64 = Convert.ToBase64String(fileBytes);
+        await JS.InvokeVoidAsync("downloadFile", fileName, fileBase64);
+    }
+}
