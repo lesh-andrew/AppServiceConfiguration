@@ -33,15 +33,15 @@
       "url": "_framework\/icudt_no_CJK.dat.br"
     },
     {
-      "hash": "sha256-esbVeP+ZpP83cSPZNbEdJE90P1VwR2xzLqEtGRG9j3k=",
+      "hash": "sha256-PKXi2viusJjXl2jcsv5T\/F4T4JnzHnnquuyiRjt32mE=",
       "url": "_framework\/blazor.boot.json.br"
     },
     {
-      "hash": "sha256-SDx5R\/UBpN6qp89K3E5vnsa\/4NNqz3a7+zgtjf5dGOA=",
+      "hash": "sha256-3roU9cYsaXYZEMbqMNZJCy4x\/y0zd7Ce4vpRkTNlRSk=",
       "url": "_framework\/AppServiceConfiguration.wasm.br"
     },
     {
-      "hash": "sha256-dlmA9GBJcbpCrPxIvueaBXSyS+a6Z\/0MMef0SIkYzqQ=",
+      "hash": "sha256-zehmbECEDiJvCqDOzz+TJGa947bKbsyBj4upEbm\/9bQ=",
       "url": "_framework\/Microsoft.AspNetCore.Components.wasm.br"
     },
     {
@@ -273,7 +273,7 @@
       "url": "_framework\/System.Xml.XDocument.wasm.br"
     },
     {
-      "hash": "sha256-IU9eCwhrY32a\/IiRZF6oncx+bOXbZWSH7JDYpVSeyL4=",
+      "hash": "sha256-d3psVuQ5uWGyGXQBSsSiEtRTuIdlwNDxJIdtCK40c0Q=",
       "url": "css\/app.css"
     },
     {
@@ -293,7 +293,7 @@
       "url": "index.html"
     },
     {
-      "hash": "sha256-xG\/R\/sO062NU6UpU2ADbLsnW\/o7MBZD2R02Qa96q4vI=",
+      "hash": "sha256-GhE6Sfrw\/RTgGrXXNTp4x2\/1rMj52YumCqTytWyEPig=",
       "url": "js\/download.js"
     },
     {
@@ -309,5 +309,5 @@
       "url": "brotliloader.min.js"
     }
   ],
-  "version": "hb69pAU4"
+  "version": "3BVdgKDy"
 };

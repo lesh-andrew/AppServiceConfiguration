@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "AppServiceConfiguration",
   "resources": {
-    "hash": "sha256-Wp5fWCj5jcNOdUt2oWJRVVcGrCASJP67xjp9bwAMmw4=",
+    "hash": "sha256-GR/UpMC9OM6HbIlc0AfI+6L0JWxvxakyBJAHP+KlABA=",
     "jsModuleNative": {
       "dotnet.native.8.0.11.n1sf6xr5tz.js": "sha256-VdKq87/z5NIxZKmuM+fv38XF+RcEb/bg3jVBwQSfwP4="
     },
@@ -17,8 +17,8 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
-      "AppServiceConfiguration.wasm": "sha256-jHz0ILT52Y7g093caR0tGK8IyZz5w0ybGSAH8sVr+Kk=",
-      "Microsoft.AspNetCore.Components.wasm": "sha256-T/miJySr7kLtTMdp/LKq+o9BHWVC4FoUB4E/2S2/odA=",
+      "AppServiceConfiguration.wasm": "sha256-/zR+Bh3IaFFA7aJdBmcBdQ8wGNPImqvRxA5N4hZmsVs=",
+      "Microsoft.AspNetCore.Components.wasm": "sha256-PyLYMaE2uda7sc7OYc9Zb9jpnw8REwuywyhHt/ssQW0=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-zHTkqN8duE5S+fZQQKVnNFumqyg6d6BMIzGYRqnL7F4=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-VTyMH1h7LAq/mIc+4P5wrXJein/K9m2gMtRLk+mIbfE=",
       "Microsoft.CSharp.wasm": "sha256-fSQkLKO81T6oeTqjA86ZwftV1PFYaQrIR1qSAy3XYKA=",
