@@ -33,11 +33,11 @@
       "url": "_framework\/icudt_no_CJK.dat.br"
     },
     {
-      "hash": "sha256-PKXi2viusJjXl2jcsv5T\/F4T4JnzHnnquuyiRjt32mE=",
+      "hash": "sha256-QKrIMAXXDIjh4htG657P35tt4RHqM\/8K5TEfC93a9Vs=",
       "url": "_framework\/blazor.boot.json.br"
     },
     {
-      "hash": "sha256-3roU9cYsaXYZEMbqMNZJCy4x\/y0zd7Ce4vpRkTNlRSk=",
+      "hash": "sha256-PqUgx8mxfXFpQ9EqeHD3ZydCofch\/rPuy8\/W5r5sW+4=",
       "url": "_framework\/AppServiceConfiguration.wasm.br"
     },
     {
@@ -289,11 +289,15 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-HlYVWdkPvDLk\/14hUROPDZam8BfqVpdWln+6nyiNtBc=",
+      "hash": "sha256-8s2vMf7HsB3dMj5+AFNeTSfF4scATWrzyJr3\/ouYH68=",
       "url": "index.html"
     },
     {
-      "hash": "sha256-GhE6Sfrw\/RTgGrXXNTp4x2\/1rMj52YumCqTytWyEPig=",
+      "hash": "sha256-DIPUSg9Mmn\/8xHf1s3IOertiZnx3vcCO8iy1w7XKNQU=",
+      "url": "js\/ComponentHandler.js"
+    },
+    {
+      "hash": "sha256-j9w5H5cbHo9iG+QOfRo5gIDOLGMCmBkvUQ3hTs8hP+g=",
       "url": "js\/download.js"
     },
     {
@@ -309,5 +313,5 @@
       "url": "brotliloader.min.js"
     }
   ],
-  "version": "3BVdgKDy"
+  "version": "KMzs1vAv"
 };
